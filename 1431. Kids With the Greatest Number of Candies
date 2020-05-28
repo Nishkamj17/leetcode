@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        vector<bool> status;
+            int max = 0;
+        for(auto i : candies)
+        {
+            if (max <= i)
+            {
+                max = i;
+            }
+        }
+        
+        for(auto i : candies)
+        {
+            bool stat = true;
+            if(i < max)
+            {
+                stat = (i+extraCandies >= max ? true : false); 
+            }
+            status.push_back(stat);
+        }
+        return status;
+    }
+};
