@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int getNumber(int n)
+    {
+        int r = 0;
+        
+        while(n > 0)
+        {
+            int p = n % 10;
+            r = r + (p*p);
+            n = n / 10;
+        }
+        return r;
+    }
+    
+    bool isHappy(int n) {
+        
+        vector<int> vec;
+        
+        while(n != 1)
+        {
+            int x = getNumber(n);
+            
+            if (std::find(vec.begin(), vec.end(), x) != vec.end())
+                return false;
+            
+            n = x;
+            vec.push_back(x);
+        }
+        
+        return true;
+    }
+};
