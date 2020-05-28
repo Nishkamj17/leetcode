@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int balancedStringSplit(string s) {
+        int pair = 0, i = 0, lCount = 0, rCount = 0;
+        while(s[i] != '\0')
+        {
+            if (s[i] == 'R')
+                rCount++;
+            else
+                lCount++;
+            if (lCount == rCount)
+            {
+                pair++;
+                lCount = 0;
+                rCount = 0;
+            }
+            i++;
+        }
+        return pair;
+    }
+};
