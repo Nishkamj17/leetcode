@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int reverse(int x) {
+        auto str = std::to_string(x);        
+	    std::reverse(str.begin(), str.end());        
+        try {
+            auto res = std::stoi(str);
+            return x < 0 ? -res : res;
+        } catch (std::out_of_range) {
+            return 0;
+        }
+    }
+};
