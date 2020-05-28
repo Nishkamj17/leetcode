@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        map<char, int> store;
+        
+        for(auto c : magazine)
+        {
+            store[c]++;
+        }
+        
+        for(auto c : ransomNote)
+        {
+            if (store.find(c) == store.end())
+            {
+                return false;
+            }
+                if (!store[c])
+                    return false;
+                store[c]--;
+        }
+        
+        return true;
+    }
+};
