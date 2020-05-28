@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool checkValidString(string s) {
+        stack<int> numLeft, numAst;
+        
+        for(int i = 0; i < s.size(); i++){
+            if(s[i] == '(') numLeft.push(i);
+            else if(s[i] == '*') numAst.push(i);
+            else{
+                if(!numLeft.empty()) numLeft.pop();
+                else if(!numAst.empty()) numAst.pop();
+                else return false;
+            }
+        }
+        
+        // extra elements in the numLeft and numAst stacks
+        while(!numLeft.empty() and !numAst.empty()){
+            if(numLeft.top() > numAst.top()) return false;
+            numLeft.pop(); numAst.pop();
+        }
+        return(numLeft.empty());
+    }
+};
