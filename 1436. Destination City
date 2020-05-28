@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string destCity(vector<vector<string>>& paths) {
+        set<string> ret;
+        
+        for(auto str : paths)
+        {
+            ret.insert(str[0]);
+            ret.insert(str[1]);
+        }
+        
+        for(string port : ret)
+        {
+            bool flag = false;
+            for(auto str : paths)
+            {
+                if (str[0] == port)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            
+            if (!flag)
+                return port;
+        }
+        
+        return "";
+    }
+};
