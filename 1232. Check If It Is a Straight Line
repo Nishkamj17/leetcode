@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& cr) {
+        if (cr.size() == 2)
+            return true;
+        
+        int ydiff = cr[1][1]-cr[0][1];
+        int xdiff = cr[1][0]-cr[0][0];
+        
+        for (int i = 2; i < cr.size(); i++)
+        {
+            if ((cr[i][0]-cr[i-1][0])*ydiff  != (cr[i][1]-cr[i-1][1])*xdiff)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
