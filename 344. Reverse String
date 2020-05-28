@@ -1,0 +1,30 @@
+class Solution {
+public:
+    
+//     void swap(char &a, char &b)
+//     {
+//         char temp;
+//         temp = a;
+//         a = b;
+//         b = temp;
+//     }
+//     void reverse(vector<char>& s, int l, int h)
+//     {
+//         if (h < l || s.size() == 0)
+//             return;
+        
+//         swap(s[l], s[h]);
+//         reverse(s, l+1, h-1);
+        
+//     }
+    void reverseString(vector<char>& s) {
+        // reverse(s, 0, s.size()-1);
+        int left = 0, right = s.size() - 1;
+        while (left < right) {
+            char tmp = s[left];
+            s[left++] = s[right];
+            s[right--] = tmp;
+        }
+    }
+
+};
