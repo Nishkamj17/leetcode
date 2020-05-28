@@ -1,0 +1,32 @@
+class FirstUnique {
+    queue<int> mqueue;
+    map<int, int> mmap;
+public:
+    FirstUnique(vector<int>& nums) {
+        for (int i = 0; i < nums.size(); i++)
+        {
+            add(nums[i]);
+        }
+    }
+    
+    int showFirstUnique() {
+        while (!mqueue.empty() && mmap[mqueue.front()] > 1)
+            mqueue.pop();
+        
+        if (mqueue.empty())
+        {
+            return -1;
+        }
+        return mqueue.front();
+        
+    }
+    
+    void add(int value) {
+        mmap[value] += 1;
+        
+        if (mmap[value] == 1)
+        {
+            mqueue.push(value);
+        }
+    }
+};
