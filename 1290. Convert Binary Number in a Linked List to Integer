@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int getDecimalValue(ListNode* head) {
+        vector<int> vec;
+        int ret = 0;
+        if (head ==  nullptr)
+            return ret;
+        
+        while(head != nullptr)
+        {
+            vec.push_back(head->val);
+            head = head->next;
+        }
+        
+        int n = vec.size();
+        for(int i = n ; i > 0; i--)
+        {
+            ret=ret+vec[i-1]*pow(2,n-i);
+        }
+        return ret;
+    }
+};
