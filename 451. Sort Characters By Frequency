@@ -1,0 +1,24 @@
+class Solution {
+public:
+    Solution(){
+        ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        std::cout.tie(nullptr);
+    }
+    string frequencySort(string s) {
+        unordered_map<char,int>a;
+        for(auto i:s)a[i]++;
+        priority_queue<pair<int,char>>pq;
+        for(auto i:a)pq.push({i.second,i.first});
+        string ss;
+        int freq;
+        char ch;
+        while(!pq.empty()){
+            freq=pq.top().first;
+            ch=pq.top().second;
+            pq.pop();
+            ss+=string(freq,ch);
+        }
+        return ss;
+    }
+};
