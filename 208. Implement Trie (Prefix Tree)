@@ -1,0 +1,80 @@
+class TrieNode
+{
+    public:
+    bool isEnd;
+    TrieNode *children[26];
+    
+    TrieNode(){
+        isEnd = false;
+        for(int i = 0; i < 26; i++)
+        {
+            children[i] = nullptr;
+        }
+    }
+};
+
+class Trie {
+    TrieNode *root;
+public:
+    /** Initialize your data structure here. */
+    Trie() {
+        root = new TrieNode();
+    }
+    
+    /** Inserts a word into the trie. */
+    void insert(string word) {
+        TrieNode *p = root;
+        int l = word.length();
+        
+        for(int i = 0; i < l; i++)
+        {
+            int id = word[i] - 'a';
+            if (p->children[id] == nullptr)
+                p->children[id] = new TrieNode;
+            
+            p = p->children[id];
+        }
+        p->isEnd = true;
+    }
+    
+    /** Returns if the word is in the trie. */
+    bool search(string word) {
+        TrieNode *p = root;
+        int l = word.length();
+        
+        for(int i = 0; i < l; i++)
+        {
+            int id = word[i] - 'a';
+            if (p->children[id] != nullptr)
+            {
+                p = p->children[id];
+            }
+            else
+            {
+                return false;
+            }
+        }
+            
+        return p->isEnd;
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    bool startsWith(string prefix) {
+        TrieNode *p = root;
+        int l = prefix.length();
+        
+        for(int i = 0; i < l; i++)
+        {
+            int id = prefix[i] - 'a';
+            if (p->children[id] != nullptr)
+            {
+                p = p->children[id];
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
